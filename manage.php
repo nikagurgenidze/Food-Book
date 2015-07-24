@@ -21,21 +21,39 @@ public function __construct()
     public function add()
 
     {
-        if( $_SESSION['is_logged']!=1)
-        {
-            redirect('admin/login');
-        }
-
         $result = $this->manage_model->add_show();
         $data['list'] = $result;
         $this->load->view('add', $data);
+    }
+
+
+    public function category()
+
+    {
+        $result = $this->manage_model->add_show();
+        $data['list'] = $result;
+        $this->load->view('cat_edit', $data);
+    }
+
+    public function category_update(){
+
+        $this->manage_model->category_update($this->input->post('cat_id'), $this->input->post('category'));
+        redirect('manage/category');
+    }
+
+
+
+
+    public function show()
+    {
+        $result=$this->manage_model->list_show();
+        $data['list'] = $result;
+        $this->load->view('list', $data);
 
     }
 
-    public function information(){
-
-
-
+    public function update($id)
+    {
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 1000;
@@ -55,6 +73,49 @@ public function __construct()
             $image =$data['upload_data']['file_name'];
         }
 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = array(
+                'foods.cat_id' => $this->input->post('cat_id'),
+                'foods.name' => $this->input->post('name'),
+                'foods.description' => $this->input->post('description'),
+                'foods.recipe' => $this->input->post('recipe'),
+                'foods.image' => $image
+            );
+
+            $this->manage_model->update($data, $id);
+        }
+
+        $result = $this->manage_model->add_show();
+        $data['list'] = $result;
+
+        $result=$this->manage_model->edit($id);
+        print_r($result);
+        $data['id']=$result;
+        $this->load->view('update',$data);
+
+
+
+ }
+
+
+    public function information(){
+        $config['upload_path']          = './uploads/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 1000;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+        $this->load->library('upload', $config);
+
+
+        if ( ! $this->upload->do_upload('userfile'))
+        {
+            $error = array('error' => $this->upload->display_errors());
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $image =$data['upload_data']['file_name'];
+        }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -62,6 +123,7 @@ public function __construct()
                 'cat_id' => $this->input->post('cat_id'),
                 'name' => $this->input->post('name'),
                 'description' => $this->input->post('description'),
+                'recipe' => $this->input->post('recipe'),
                 'image' => $image
             );
 
@@ -69,15 +131,10 @@ public function __construct()
             {
                 $this->db->set('name', $this->input->post('category'));
                 $this->db->insert('category');
-
                 $data1['cat_id'] = $this->db->insert_id();
-
-
             }
 
             $this->manage_model->information_save($data1);
-
-
 
             $this->load->view('add');
             redirect('manage/add');

@@ -52,33 +52,19 @@
 
 <div class="continer">
     <div class="form">
-        <?php echo form_open_multipart('manage/information');?>
-            <p class="contact"><label>კატეგორია</label></p>
-            <select id="txtHint" name="cat_id">
-                <option>აირჩიე კატეგორია</option>
-                <option value="new">ახალი კატეგორია</option>
-                <?php foreach($list as $item) { ?>
-                    <option value="<?php echo $item['id']; ?>"><?php echo $item['name']; ?></option>
-                <?php }?>
-            </select>
+        <?php echo form_open_multipart('manage/category_update');?>
+        <p class="contact"><label>კატეგორია</label></p>
+        <select id="txtHint" name="cat_id">
+            <option>აირჩიე კატეგორია</option>
+            <?php foreach($list as $item) { ?>
+                <option value="<?php echo $item['id']; ?>"><?php echo $item['name']; ?></option>
+            <?php }?>
+        </select>
 
-            <p class="contact"><label>კატეგორია</label></p>
-            <input type="text" name="category" placeholder="კატეგორია" disabled="disabled">
+        <p class="contact"><label>კატეგორია</label></p>
+        <input type="text" name="category" placeholder="კატეგორია" >
 
-            <p class="contact"><label>სახელი</label></p>
-            <input type="text" name="name" placeholder="სახელი">
-
-            <p class="contact"><label>დახასიათება</label></p>
-            <textarea type="text" name="description" placeholder="დახასიათება"></textarea>
-
-            <p class="contact"><label>რეცეპტი</label></p>
-            <textarea type="text" name="recipe" placeholder="რეცეპტი" ></textarea>
-
-            <p class="contact"><label>ფაილის ატვირთვა</label></p>
-            <input type="file" name="userfile" size="20" />
-
-
-        <button type="submit" class='animated infinite pulse'>კერძის დამატება</button>
+        <button type="submit" class='animated infinite pulse'>კატეგორიის დამატება</button>
         </form>
 
     </div>
@@ -93,15 +79,13 @@ $json = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
 
 
 
-
-
 <script>
 
-$('#txtHint').on('change', function() {
-    if ( $(this).val() == 'new' ) {
-        $('input[name="category"]').prop('disabled', false);
-    }
-});
+    $('#txtHint').on('change', function() {
+        if ( $(this).val() == 'new' ) {
+            $('input[name="category"]').prop('disabled', false);
+        }
+    });
 
 </script>
 

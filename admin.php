@@ -7,6 +7,7 @@ class Admin extends CI_Controller{
         parent::__construct();
         session_start();
 
+
     }
 
     public function login()

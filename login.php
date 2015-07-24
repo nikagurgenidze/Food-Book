@@ -8,9 +8,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <title>Welcome to CodeIgniter</title>
 
+
     <style type="text/css">
         body {
-            /*background:url("https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/11083784_1458723654417928_77452602206025597_o.jpg") no-repeat center center fixed;*/
+            background: url(<?php echo base_url('assets/image/2.jpg');?>) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -25,23 +26,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             position: fixed;
             top: 0;
             left: 0;
-            /*background: #2ecc71;*/
-            /* IE Fallback */
-            /*background: rgba(46, 204, 113, 0.8);*/
             width: 100%;
             height: 100%;
         }
         .form {
-            background-color: #8ba8af;
+            border-radius: 5px;
+            opacity: .7;
             position: absolute;
             top: 39.5%;
             height: 131px;
-            border-radius: 22px;
-            left: 51%;
+            left: 53.2%;
             width: 181px;
             margin: -140px 0 0 -182px;
             padding: 40px;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         }
 
         .form input {
@@ -73,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         .form button {
             border-radius: 5px;
             cursor: pointer;
-            background:#5749D8;
+            background:#CB7B3C;
             width: 100%;
             padding: 10px 15px;
             border: 0;
@@ -90,12 +87,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             transition: 0.2s linear;
         }
         .form button:hover {
-            background: #160F54;
+            background: #311200;
         }
+
     </style>
 
 </head>
 <body>
+
+<h1 align="center">FOOD BOOK</h1>
 
 <div id="container">
     <?php echo form_open('admin/login');?>

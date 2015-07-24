@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,11 +13,9 @@
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="jquery.quicksearch.js"></script>
+
 </head>
-
-
-
-
+</head>
 <body>
 
 
@@ -50,60 +48,49 @@
 </nav>
 
 
+
 <div class="continer">
     <div class="form">
-        <?php echo form_open_multipart('manage/information');?>
+
+        <form action="<?php echo site_url('manage/update/'.$id['id']);?>" method="post" enctype="multipart/form-data">
+
+
             <p class="contact"><label>კატეგორია</label></p>
             <select id="txtHint" name="cat_id">
                 <option>აირჩიე კატეგორია</option>
-                <option value="new">ახალი კატეგორია</option>
-                <?php foreach($list as $item) { ?>
-                    <option value="<?php echo $item['id']; ?>"><?php echo $item['name']; ?></option>
-                <?php }?>
+                <?php foreach($list as $item) { ?><?php if($item['name']==$id['category_name']){ ?>
+                    <option value="<?php echo $item['id']; ?>" selected> <?php echo $item['name']; ?> </option>
+                <?php }
+                else {?>
+                <option value="<?php echo $item['id']; ?>" > <?php echo $item['name']; ?> </option>
+                <?php }}?>
             </select>
 
-            <p class="contact"><label>კატეგორია</label></p>
-            <input type="text" name="category" placeholder="კატეგორია" disabled="disabled">
-
-            <p class="contact"><label>სახელი</label></p>
-            <input type="text" name="name" placeholder="სახელი">
-
-            <p class="contact"><label>დახასიათება</label></p>
-            <textarea type="text" name="description" placeholder="დახასიათება"></textarea>
-
-            <p class="contact"><label>რეცეპტი</label></p>
-            <textarea type="text" name="recipe" placeholder="რეცეპტი" ></textarea>
-
-            <p class="contact"><label>ფაილის ატვირთვა</label></p>
-            <input type="file" name="userfile" size="20" />
 
 
-        <button type="submit" class='animated infinite pulse'>კერძის დამატება</button>
+
+        <p class="contact"><label>სახელი</label></p>
+        <input type="text" name="name" placeholder="სახელი" value="<?php echo $id['name']; ?>">
+
+        <p class="contact"><label>დახასიათება</label></p>
+        <textarea type="text" name="description" placeholder="დახასიათება"><?php echo $id['description']; ?></textarea>
+
+        <p class="contact"><label>რეცეპტი</label></p>
+        <textarea type="text" name="recipe" placeholder="რეცეპტი" ><?php echo $id['recipe']; ?></textarea>
+        <p>
+            <img src="<?php echo base_url('uploads/'.$id['image']);?>" alt="" height="90px">
+        </p>
+        <p class="contact"><label>ფაილის ატვირთვა</label></p>
+        <input type="file" name="userfile" size="20" />
+
+
+        <button type="submit" class='animated infinite pulse'>კერძის ცვლილება</button>
         </form>
 
     </div>
 </div>
 
 
-<?php
-$json = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
-
-
-?>
-
-
-
-
-
-<script>
-
-$('#txtHint').on('change', function() {
-    if ( $(this).val() == 'new' ) {
-        $('input[name="category"]').prop('disabled', false);
-    }
-});
-
-</script>
-
 </body>
 </html>
+
