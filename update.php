@@ -5,6 +5,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css');?>"/>
     <link rel="stylesheet" href="<?php echo base_url('assets/js/bootstrap.min.js');?>"/>
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>"/>
+
 
 
     <!-- Latest compiled and minified JavaScript -->
@@ -72,11 +74,21 @@
         <p class="contact"><label>სახელი</label></p>
         <input type="text" name="name" placeholder="სახელი" value="<?php echo $id['name']; ?>">
 
+        <p class="contact"><label>name</label></p>
+        <input type="text" name="name_en" placeholder="name" value="<?php echo $id['name_en']; ?>">
+
         <p class="contact"><label>დახასიათება</label></p>
         <textarea type="text" name="description" placeholder="დახასიათება"><?php echo $id['description']; ?></textarea>
 
+        <p class="contact"><label>description</label></p>
+        <textarea type="text" name="description_en" placeholder="description"><?php echo $id['description_en']; ?></textarea>
+
         <p class="contact"><label>რეცეპტი</label></p>
         <textarea type="text" name="recipe" placeholder="რეცეპტი" ><?php echo $id['recipe']; ?></textarea>
+
+        <p class="contact"><label>recipe</label></p>
+        <textarea type="text" name="recipe_en" placeholder="recipe" ><?php echo $id['recipe_en']; ?></textarea>
+
         <p>
             <img src="<?php echo base_url('uploads/'.$id['image']);?>" alt="" height="90px">
         </p>

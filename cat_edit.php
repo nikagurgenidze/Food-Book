@@ -15,7 +15,15 @@
     <script type="text/javascript" src="jquery.quicksearch.js"></script>
 </head>
 
-
+<style>
+    .form{
+        background-color: #8ba8af;
+        width:470px;
+        height: 390px;
+        margin:80px auto;
+        padding-left:38px;
+        padding-top:15px;
+</style>
 
 
 <body>
@@ -64,7 +72,16 @@
         <p class="contact"><label>კატეგორია</label></p>
         <input type="text" name="category" placeholder="კატეგორია" >
 
-        <button type="submit" class='animated infinite pulse'>კატეგორიის დამატება</button>
+        <p class="contact"><label>Category</label></p>
+        <input type="text" name="category_en" placeholder="Category" >
+
+        <p class="contact"><label>ფაილის ატვირთვა</label></p>
+        <input type="file" name="userfile" size="20" />
+
+
+
+        <button type="submit" class='animated infinite pulse'>კატეგორიის ცვლილება</button>
+        <a  href="<?php echo site_url('manage/cat_delete/'.$item['id']);?>"><button type="submit"  class="animated infinite pulse">Cetegory Delete</button></a>
         </form>
 
     </div>

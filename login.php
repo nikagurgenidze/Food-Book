@@ -8,7 +8,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <title>Welcome to CodeIgniter</title>
 
-
     <style type="text/css">
         body {
             background: url(<?php echo base_url('assets/image/2.jpg');?>) no-repeat center center fixed;

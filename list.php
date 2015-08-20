@@ -45,18 +45,37 @@
 
 
 <style>
-    .table{
 
+
+    .table{
+        -webkit-box-shadow: 0px 3px 29px -8px rgba(115,115,115,1);
+        -moz-box-shadow: 0px 3px 29px -8px rgba(115,115,115,1);
+        box-shadow: 0px 3px 29px -8px rgba(115,115,115,1);
         margin-top: 80px;
     }
+
+    tr{
+        transition: all 0.5s;
+     }
+
+
+
+    .commentlist:nth-child(even)
+    {
+        background-color:rgb(252, 252, 252)
+    }
+    .commentlist:hover{
+        background-color: rgb(243, 243, 243);
+    }
+
+
 
 </style>
 </head>
 <body>
 
-
-
-<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-list">
+    <nav class="navbar navbar-default navbar-fixed-top">
 
     <div class="container-fluid">
 
@@ -91,19 +110,25 @@
     });
 </script>
 
+
+
+
 <div class="table">
 
     <table class="table table-bordered">
 
         <tr>
             <th>კატეგორია</th>
+            <th>Category</th>
             <th>სახელი</th>
+            <th>Name</th>
             <th>დახასიათება</th>
+            <th>Description</th>
             <th>რეცეპტი</th>
+            <th>Recipe</th>
             <th>სურათი</th>
+            <th>რეიტინგი</th>
             <th>მართვა</th>
-
-
         </tr>
 
         <?php
@@ -111,17 +136,22 @@
         {
             ?>
 
-
             <tr class="commentlist" id="id">
 
                 <td class="spec"><p style="width: 150px;"><?=$item_name["category_name"];?></p></td>
+                <td class="spec"><p style="width: 150px;"><?=$item_name["name_en"];?></p></td>
                 <td><p style="width: 150px;"><?=$item_name["name"];?></p></td>
+                <td><p style="width: 150px;"><?=$item_name["name_en"];?></p></td>
                 <td><p style="width: 150px;"><?=$item_name["description"];?></p></td>
+                <td><p style="width: 150px;"><?=$item_name["description_en"];?></p></td>
                 <td><p style="width: 150px;"><?=$item_name["recipe"];?></p></td>
-                <td><p style="width: 150px;"><img src="<?php echo base_url('uploads/'.$item_name["image"]);?>" height="70"></p></td>
+                <td><p style="width: 150px;"><?=$item_name["recipe_en"];?></p></td>
+                <td><p style="width: 150px;"><img src="<?php echo base_url('uploads/'.$item_name["image"]);?>" height="80" width="80"></p></td>
+                <td><p style="width: 150px;"><?=$item_name["rating"];?>    (<?=$item_name["votenumber"];?>)</p></td>
+
                 <td>
                     <a  href="<?php echo site_url('manage/update/'.$item_name['id']);?>"><button type="button"  class="btn btn-default navbar-btn">Edit</button></a>
-                    <a  href="<?php echo site_url('manage/update/'.$item_name['id']);?>"><button type="button"  class="btn btn-default navbar-btn">Delate</button></a>
+                    <a  href="<?php echo site_url('manage/row_delete/'.$item_name['id']);?>"><button type="button"  class="btn btn-default navbar-btn">Delete</button></a>
                     <input type="hidden" name="id" value="<?=$item_name["id"];?>">
                 </td>
             </tr>
@@ -131,7 +161,7 @@
 
     </table>
 </div>
-
+</div>
 
 </body>
 </html>

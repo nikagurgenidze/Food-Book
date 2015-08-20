@@ -15,10 +15,17 @@
     <script type="text/javascript" src="jquery.quicksearch.js"></script>
 </head>
 
+<style>
+    .container-list{
+        background: url(../assets/image/12.jpg) no-repeat;
+        filter: blur(10px);
+       background-attachment: fixed;
+
+    }
+</style>
 
 
-
-<body>
+<body class="container-list">
 
 
 
@@ -65,14 +72,26 @@
             <p class="contact"><label>კატეგორია</label></p>
             <input type="text" name="category" placeholder="კატეგორია" disabled="disabled">
 
+            <p class="contact"><label>Category</label></p>
+            <input type="text" name="category_en" placeholder="Category" disabled="disabled">
+
             <p class="contact"><label>სახელი</label></p>
             <input type="text" name="name" placeholder="სახელი">
+
+            <p class="contact"><label>Name</label></p>
+            <input type="text" name="name_en" placeholder="Name">
 
             <p class="contact"><label>დახასიათება</label></p>
             <textarea type="text" name="description" placeholder="დახასიათება"></textarea>
 
+            <p class="contact"><label>Description</label></p>
+            <textarea type="text" name="description_en" placeholder="Description"></textarea>
+
             <p class="contact"><label>რეცეპტი</label></p>
             <textarea type="text" name="recipe" placeholder="რეცეპტი" ></textarea>
+
+            <p class="contact"><label>Recipe</label></p>
+            <textarea type="text" name="recipe_en" placeholder="Recipe" ></textarea>
 
             <p class="contact"><label>ფაილის ატვირთვა</label></p>
             <input type="file" name="userfile" size="20" />
@@ -87,8 +106,6 @@
 
 <?php
 $json = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
-
-
 ?>
 
 
